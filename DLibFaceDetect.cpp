@@ -4,7 +4,7 @@
 
  ***********************************************************************************************************************/
 
-#include "opencv2/photo.hpp"
+//#include "opencv2/photo.hpp"
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <dlib/opencv.h>
@@ -56,7 +56,7 @@ int main(){
     // Detect faces
                std::vector<dlib::rectangle> faces = detector(cimg);
 
-   // cv::Rect R = dlib2cv(faces[0]);
+   // cv::Rect R = dlib2cv(faces[0]); Convert Dlib rect to OpenCV rect
     cv::Rect R;
     R.x = faces[0].left();
     R.y = faces[0].top();
@@ -81,7 +81,7 @@ int main(){
     return 0;
 }
 
-
+// Function to convert a DLib rectange to OpenCV rect
 cv::Rect dlib2cv(const dlib::rectangle& r)
 {
     return cv::Rect(r.left(), r.top(), r.width(), r.height());
